@@ -33,7 +33,7 @@ public class User implements Serializable {
     @Column(name = "email", columnDefinition = "varchar(255) comment '注册邮箱'")
     private String email;
 
-    @JoinColumn(name = "type", columnDefinition = "int(11) comment '用户类型'")
+    @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '用户类型'")
     private Dictionary dictionary;
 
     @ManyToMany(targetEntity = Role.class, mappedBy = "users")
