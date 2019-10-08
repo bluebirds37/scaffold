@@ -1,9 +1,6 @@
 package top.bluebirds37.scaffold.pojo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,7 +17,8 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "id", columnDefinition = "bigint comment '主键'")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
     private Integer id;
 
     @Column(name = "username", columnDefinition = "varchar(255) comment '用户'")
@@ -34,6 +32,9 @@ public class User implements Serializable {
 
     @Column(name = "email", columnDefinition = "varchar(255) comment '注册邮箱'")
     private String email;
+
+    @JoinColumn(name = "type", columnDefinition = "int(11) comment '用户类型'")
+    private Dictionary dictionary;
 
     @ManyToMany(targetEntity = Role.class, mappedBy = "users")
     private Set<Role> roles = new LinkedHashSet<>();

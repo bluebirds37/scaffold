@@ -21,10 +21,11 @@ import java.util.Set;
 public class Dictionary implements Serializable {
 
     @Id
-    @Column(name = "id", columnDefinition = "bigint comment '主键'")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
     private Integer id;
 
-    @JoinColumn(name = "parent_id", columnDefinition = "bigint comment '父id'")
+    @JoinColumn(name = "parent_id", columnDefinition = "int(11) comment '父id'")
     @ManyToOne(targetEntity = Dictionary.class)
     private Dictionary parentDictionary;
 

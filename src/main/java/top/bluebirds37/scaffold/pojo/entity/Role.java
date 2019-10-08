@@ -20,23 +20,24 @@ import java.util.Set;
 public class Role implements Serializable {
 
     @Id
-    @Column(name = "id", columnDefinition = "bigint comment '主键'")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
     private Integer id;
 
-    @JoinColumn(name = "parent_id", columnDefinition = "bigint comment '父角色'")
+    @JoinColumn(name = "parent_id", columnDefinition = "int(11) comment '父角色'")
     @ManyToOne(targetEntity = Role.class)
     private Role parentRole;
 
     @Column(name = "name", columnDefinition = "varchar(255) comment '角色名称'")
     private String name;
 
-    @JoinColumn(name = "type_id", columnDefinition = "varchar(255) comment '角色英文名称'")
+    @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '角色英文名称'")
     private Dictionary dictionary;
 
     @Column(name = "description", columnDefinition = "varchar(255) comment '备注'")
     private String description;
 
-    @JoinColumn(name = "parent_id", columnDefinition = "bigint comment '父角色'")
+    @JoinColumn(name = "parent_id", columnDefinition = "int(11) comment '父角色'")
     @OneToMany(targetEntity = Role.class)
     private Set<Role> childRoles = new LinkedHashSet<>();
 

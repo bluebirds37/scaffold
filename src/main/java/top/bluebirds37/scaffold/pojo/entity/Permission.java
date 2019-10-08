@@ -21,10 +21,11 @@ import java.util.Set;
 public class Permission implements Serializable {
 
     @Id
-    @Column(name = "id", columnDefinition = "bigint comment '主键'")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
     private Integer id;
 
-    @JoinColumn(name = "parent_id", columnDefinition = "bigint comment '父权限'")
+    @JoinColumn(name = "parent_id", columnDefinition = "int(11) comment '父权限'")
     @ManyToOne(targetEntity = Permission.class)
     private Permission permission;
 
@@ -34,14 +35,14 @@ public class Permission implements Serializable {
     @Column(name = "url", columnDefinition = "varchar(255) comment '接口地址'")
     private String url;
 
-    @JoinColumn(name = "type_id", columnDefinition = "varchar(255) comment '类型'")
+    @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '类型'")
     @ManyToOne(targetEntity = Dictionary.class)
     private Dictionary dictionary;
 
     @Column(name = "description", columnDefinition = "varchar(255) comment '备注'")
     private String description;
 
-    @JoinColumn(name = "parent_id", columnDefinition = "bigint comment '父权限'")
+    @JoinColumn(name = "parent_id", columnDefinition = "int(11) comment '父权限'")
     @OneToMany(targetEntity = Permission.class)
     private Set<Permission> childPermissions = new LinkedHashSet<>();
 
