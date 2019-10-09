@@ -8,8 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private CrossInterceptor crossInterceptor;
+
     @Autowired
     private AuthenticationInterceptor jwtInterceptor;
     @Autowired
@@ -19,10 +18,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //跨域
-        registry.addInterceptor(crossInterceptor)
-                .addPathPatterns("/**")
-                .order(0);
         //认证
         registry.addInterceptor(jwtInterceptor).order(1)
                 .addPathPatterns("/**")
