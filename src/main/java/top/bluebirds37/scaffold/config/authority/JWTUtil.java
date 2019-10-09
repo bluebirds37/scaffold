@@ -6,10 +6,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-
-import javax.crypto.SecretKey;
 import java.security.Key;
-import java.util.Date;
 
 public class JWTUtil {
 
