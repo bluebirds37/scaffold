@@ -56,20 +56,10 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         JSONObject jsonObject = JSONObject.parseObject(loginUserString);
         UserDto loginUserDto = JSONObject.toJavaObject(jsonObject, UserDto.class);
         Set<Role> roles = loginUserDto.getRoles();
-        List<String> loginUserPermissionList = new ArrayList<>();
-        roles.forEach(
-                roleDto -> {
-                    Set<Permission> permissions = roleDto.getPermissions();
-                    permissions.forEach(
-                            permissionDto -> {
-                                loginUserPermissionList.add(permissionDto.getUrl());
-                            }
-                    );
-                }
-        );
-        // 权限列表
         String requestUri = request.getRequestURI();
-        if (!loginUserPermissionList.contains(requestUri)) {
+        boolean hasPermission = roles.stream().anyMatch(role -> role.getPermissions().stream().anyMatch(permission -> permission.getUrl().equals(requestUri)));
+        // 权限列表
+        if (!hasPermission) {
             throw new AuthorityException("权限不足");
         }
         return true;
