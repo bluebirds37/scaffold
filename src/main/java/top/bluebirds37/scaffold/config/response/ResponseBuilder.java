@@ -36,7 +36,6 @@ public class ResponseBuilder<T> {
      * @return
      */
     public static <T, R> ResponseBean<PageBean<R>> ok(Page<T> page, Function<? super T, ? extends R> function) {
-
         return ResponseBean.<PageBean<R>>builder().data(buildPageBean(page, function)).status(ResponseEnum.OK.status).massage(ResponseEnum.OK.message).build();
     }
 
