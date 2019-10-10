@@ -14,6 +14,8 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class CrossOriginConfig {
 
+    //CorsFilter 与 security 不兼容
+
     @Bean
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
@@ -28,7 +30,7 @@ public class CrossOriginConfig {
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
 
-    //CorsFilter 与 security 不兼容
+
     /*@WebFilter(filterName = "CorsFilter ")
     @Configuration
     public class CorsFilter implements Filter {
