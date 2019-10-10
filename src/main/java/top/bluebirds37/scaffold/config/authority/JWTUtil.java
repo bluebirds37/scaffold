@@ -51,7 +51,7 @@ public class JWTUtil {
      * @param
      * @return
      */
-    public static String sign(Integer userId, Long expireTime) {
+    public static String sign(Integer userId) {
         // 指定过期时间
         return Jwts.builder()
                 .setSubject(userId.toString())
