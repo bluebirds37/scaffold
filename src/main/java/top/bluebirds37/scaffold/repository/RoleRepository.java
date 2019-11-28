@@ -1,6 +1,6 @@
 package top.bluebirds37.scaffold.repository;
 
-import top.bluebirds37.scaffold.pojo.entity.Role;
+import top.bluebirds37.scaffold.pojo.po.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

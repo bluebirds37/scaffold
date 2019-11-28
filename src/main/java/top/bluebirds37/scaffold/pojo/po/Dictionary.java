@@ -1,4 +1,4 @@
-package top.bluebirds37.scaffold.pojo.entity;
+package top.bluebirds37.scaffold.pojo.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

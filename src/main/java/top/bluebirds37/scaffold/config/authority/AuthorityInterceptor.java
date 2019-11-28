@@ -5,8 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import top.bluebirds37.scaffold.config.exception.AuthenticationException;
 import top.bluebirds37.scaffold.config.exception.AuthorityException;
 import top.bluebirds37.scaffold.pojo.dto.UserDto;
-import top.bluebirds37.scaffold.pojo.entity.Permission;
-import top.bluebirds37.scaffold.pojo.entity.Role;
+import top.bluebirds37.scaffold.pojo.po.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +14,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,7 +33,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
-    @Autowired
+    @Resource
     private AuthenticationProperties authenticationProperties;
 
     @Override

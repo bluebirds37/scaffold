@@ -1,6 +1,6 @@
 package top.bluebirds37.scaffold.pojo.dto;
 
-import top.bluebirds37.scaffold.pojo.entity.Role;
+import top.bluebirds37.scaffold.pojo.po.Role;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
