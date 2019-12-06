@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 
 @Configuration
-public class JacksonStringDeserializer {
+public class JacksonNullStringDeserializer {
 
     @Bean
     @Primary
