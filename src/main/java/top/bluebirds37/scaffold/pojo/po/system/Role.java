@@ -1,4 +1,4 @@
-package top.bluebirds37.scaffold.pojo.po;
+package top.bluebirds37.scaffold.pojo.po.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +32,7 @@ public class Role implements Serializable {
     private String name;
 
     @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '角色英文名称'")
-    private Dictionary dictionary;
+    private Dictionary type;
 
     @Column(name = "description", columnDefinition = "varchar(255) comment '备注'")
     private String description;
