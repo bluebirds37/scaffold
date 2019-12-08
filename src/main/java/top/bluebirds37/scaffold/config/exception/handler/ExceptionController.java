@@ -1,4 +1,4 @@
-package top.bluebirds37.scaffold.handler;
+package top.bluebirds37.scaffold.config.exception.handler;
 
 import top.bluebirds37.scaffold.config.exception.AuthenticationException;
 import top.bluebirds37.scaffold.config.exception.AuthorityException;
@@ -24,14 +24,14 @@ public class ExceptionController {
     /**
      * 异常
      */
-    @ResponseStatus(HttpStatus.OK)
+    /*@ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({
             Exception.class
     })
     public ResponseBean exceptionHandler(Exception e) {
         e.printStackTrace();
         return ResponseBuilder.fail(e.getMessage());
-    }
+    }*/
 
     /**
      * 自定义异常
@@ -41,6 +41,7 @@ public class ExceptionController {
             CustomException.class
     })
     public ResponseBean handleCustomException(CustomException e) {
+        e.printStackTrace();
         return ResponseBuilder.fail(e.getMessage());
     }
 
@@ -53,6 +54,7 @@ public class ExceptionController {
             AuthorityException.class
     })
     public ResponseBean handleAuthorityException(AuthorityException e) {
+        e.printStackTrace();
         return ResponseBuilder.fail(ResponseEnum.FORBIDDEN.status, ResponseEnum.FORBIDDEN.message);
     }
 
@@ -64,6 +66,7 @@ public class ExceptionController {
             AuthenticationException.class
     })
     public ResponseBean handleAuthenticationException(AuthenticationException e) {
+        e.printStackTrace();
         return ResponseBuilder.fail(ResponseEnum.UNAUTHORIZED.status, ResponseEnum.UNAUTHORIZED.message);
     }
 
@@ -77,6 +80,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public ResponseBean handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        e.printStackTrace();
         List<String> errorList = new ArrayList<>();
         e.getBindingResult().getAllErrors().forEach(
                 objectError -> {
@@ -95,6 +99,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({BindException.class})
     public ResponseBean handleBindException(BindException e) {
+        e.printStackTrace();
         List<String> errorList = new ArrayList<>();
         e.getBindingResult().getAllErrors().forEach(
                 objectError -> {

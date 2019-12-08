@@ -21,16 +21,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
-@ConfigurationProperties(prefix = "com.liaoin.auth")
+@ConfigurationProperties(prefix = "blue.auth")
 public class AuthenticationProperties {
 
     private Long expireTime;
 
-    private String headerName;
+    private String headerName="Authentication";
     /**
      * redis获取当前用户 key
      */
-    private String loginUserKey;
+    private String loginUserKey="LOGIN:USERS:";
 
     private String tokenKey;
 

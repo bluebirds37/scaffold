@@ -43,4 +43,14 @@ spring:
 swagger:
   enabled: true
   title: "API"
-  base-package: com.liaoin.smart.analysis.consumer.controller
+  base-package: top.bluebirds37.scaffold.controller
+blue:
+  auth:
+    permit-url-list:
+      - /swagger-ui.html
+      - /webjars/**
+      - /swagger-resources/**
+      - /v2/**
+      - /favicon.ico
+      - /
+      - /csrf
