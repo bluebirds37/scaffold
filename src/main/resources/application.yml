@@ -37,16 +37,20 @@ spring:
     password: admin
     port: 5672
     host: 127.0.0.1
-    publisher-confirms: true
-    publisher-returns: true
-    template:
-      mandatory: true
-    listener:
-      simple:
-        acknowledge-mode: manual
+
 
 # swagger配置
 swagger:
   enabled: true
   title: "API"
-  base-package: com.liaoin.smart.analysis.consumer.controller
+  base-package: top.bluebirds37.scaffold.controller
+blue:
+  auth:
+    permit-url-list:
+      - /swagger-ui.html
+      - /webjars/**
+      - /swagger-resources/**
+      - /v2/**
+      - /favicon.ico
+      - /
+      - /csrf

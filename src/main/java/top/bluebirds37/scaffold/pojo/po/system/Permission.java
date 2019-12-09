@@ -1,4 +1,4 @@
-package top.bluebirds37.scaffold.pojo.po;
+package top.bluebirds37.scaffold.pojo.po.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,7 +37,7 @@ public class Permission implements Serializable {
 
     @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '类型'")
     @ManyToOne(targetEntity = Dictionary.class)
-    private Dictionary dictionary;
+    private Dictionary type;
 
     @Column(name = "description", columnDefinition = "varchar(255) comment '备注'")
     private String description;

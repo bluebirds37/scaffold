@@ -1,8 +1,14 @@
-package top.bluebirds37.scaffold.pojo.po;
+package top.bluebirds37.scaffold.pojo.dto.system;
 
-import lombok.*;
+import top.bluebirds37.scaffold.pojo.po.system.Role;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.ManyToMany;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -11,31 +17,26 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "t_user")
-@org.hibernate.annotations.Table(appliesTo = "t_user", comment = "用户")
-public class User implements Serializable {
+public class UserDto implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
-    private Integer id;
+    private Long id;
 
-    @Column(name = "username", columnDefinition = "varchar(255) comment '用户'")
+    @ApiModelProperty(value = "用户")
     private String username;
 
+    @ApiModelProperty(value = "密码")
     @Column(name = "password", columnDefinition = "varchar(255) comment '密码'")
     private String password;
 
+    @ApiModelProperty(value = "注册手机号")
     @Column(name = "phone", columnDefinition = "varchar(255) comment '注册手机号'")
     private String phone;
 
+    @ApiModelProperty(value = "注册邮箱")
     @Column(name = "email", columnDefinition = "varchar(255) comment '注册邮箱'")
     private String email;
 
-    @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '用户类型'")
-    private Dictionary dictionary;
-
+    @ApiModelProperty(value = "角色")
     @ManyToMany(targetEntity = Role.class, mappedBy = "users")
     private Set<Role> roles = new LinkedHashSet<>();
 

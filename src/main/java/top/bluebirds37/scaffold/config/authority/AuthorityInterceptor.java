@@ -4,8 +4,8 @@ package top.bluebirds37.scaffold.config.authority;
 import com.alibaba.fastjson.JSONObject;
 import top.bluebirds37.scaffold.config.exception.AuthenticationException;
 import top.bluebirds37.scaffold.config.exception.AuthorityException;
-import top.bluebirds37.scaffold.pojo.dto.UserDto;
-import top.bluebirds37.scaffold.pojo.po.Role;
+import top.bluebirds37.scaffold.pojo.dto.system.UserDto;
+import top.bluebirds37.scaffold.pojo.po.system.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         if (loginUserId == null) {
             throw new AuthenticationException("请登录");
         }
-        String loginUserString = redisTemplate.opsForValue().get(authenticationProperties.getLoginUserKey() + loginUserId);
+        String loginUserString = redisTemplate.opsForValue().get(StringUtils.join(authenticationProperties.getLoginUserKey() , loginUserId));
         if (StringUtils.isBlank(loginUserString)) {
             throw new AuthenticationException("请登录");
         }

@@ -2,7 +2,7 @@ package top.bluebirds37.scaffold.config.authority;
 
 
 import top.bluebirds37.scaffold.config.exception.AuthenticationException;
-import top.bluebirds37.scaffold.pojo.po.User;
+import top.bluebirds37.scaffold.pojo.po.system.User;
 import top.bluebirds37.scaffold.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
