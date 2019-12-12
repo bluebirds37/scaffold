@@ -54,3 +54,4 @@ blue:
       - /favicon.ico
       - /
       - /csrf
+      - /error
