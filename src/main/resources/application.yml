@@ -60,3 +60,4 @@ blue:
       - /
       - /csrf
       - /error
+      - /SendSheet**

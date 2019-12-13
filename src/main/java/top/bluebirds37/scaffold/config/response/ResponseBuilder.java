@@ -18,6 +18,17 @@ public class ResponseBuilder<T> {
     /**
      * 相应单一对象
      *
+     * @param
+     * @param
+     * @return
+     */
+    public static  ResponseBean ok() {
+        return ResponseBean.builder().status(ResponseEnum.OK.status).massage(ResponseEnum.OK.message).build();
+    }
+
+    /**
+     * 相应单一对象
+     *
      * @param data
      * @param <T>
      * @return
