@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @Configuration
 @Slf4j
-public class CustomerOldFileListener implements ApplicationListener<ContextRefreshedEvent> {
+public class CustomerListener implements ApplicationListener<ContextRefreshedEvent> {
 
     @Resource
     private SystemProperties systemProperties;
