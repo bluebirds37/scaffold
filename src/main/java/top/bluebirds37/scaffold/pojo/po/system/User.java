@@ -1,6 +1,7 @@
 package top.bluebirds37.scaffold.pojo.po.system;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,9 +18,10 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
-    private Integer id;
+    @GeneratedValue(generator = "snowFlake")
+    @GenericGenerator(name = "snowFlake", strategy = "top.bluebirds37.scaffold.config.jpa.SnowIdentityGenerator")
+    @Column(name = "id", columnDefinition = "varchar(255) comment '主键'")
+    private String id;
 
     @Column(name = "username", columnDefinition = "varchar(255) comment '用户'")
     private String username;
@@ -33,7 +35,7 @@ public class User implements Serializable {
     @Column(name = "email", columnDefinition = "varchar(255) comment '注册邮箱'")
     private String email;
 
-    @JoinColumn(name = "type_id", columnDefinition = "int(11) comment '用户类型'")
+    @JoinColumn(name = "type_id", columnDefinition = "varchar(255) comment '用户类型'")
     private Dictionary type;
 
     @ManyToMany(targetEntity = Role.class, mappedBy = "users")

@@ -50,10 +50,10 @@ public class JWTUtil {
      * @param
      * @return
      */
-    public static String sign(Integer userId) {
+    public static String sign(String userId) {
         // 指定过期时间
         return Jwts.builder()
-                .setSubject(userId.toString())
+                .setSubject(userId)
                 .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
     }

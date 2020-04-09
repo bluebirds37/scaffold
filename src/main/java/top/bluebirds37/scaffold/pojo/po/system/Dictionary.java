@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,11 +22,12 @@ import java.util.Set;
 public class Dictionary implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "int(11) comment '主键'")
-    private Integer id;
+    @GeneratedValue(generator = "snowFlake")
+    @GenericGenerator(name = "snowFlake", strategy = "top.bluebirds37.scaffold.config.jpa.SnowIdentityGenerator")
+    @Column(name = "id", columnDefinition = "varchar(255) comment '主键'")
+    private String id;
 
-    @JoinColumn(name = "parent_id", columnDefinition = "int(11) comment '父id'")
+    @JoinColumn(name = "parent_id", columnDefinition = "varchar(255) comment '父id'")
     @ManyToOne(targetEntity = Dictionary.class)
     private Dictionary parentDictionary;
 
