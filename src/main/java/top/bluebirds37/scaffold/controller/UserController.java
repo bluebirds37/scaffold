@@ -20,7 +20,7 @@ public class UserController {
 
     @ApiOperation("注册")
     @PostMapping(value = "/register")
-    public ResponseEntity register(UserRegisterVo userRegisterVo) {
+    public ResponseEntity<?> register(UserRegisterVo userRegisterVo) {
         return userService.register(userRegisterVo);
     }
 

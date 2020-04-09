@@ -8,6 +8,7 @@ public enum ResponseEnum {
     OK(10000,"成功"),
     UNAUTHORIZED(30001,"未认证"),
     FORBIDDEN(30002,"未认证"),
+    NOTFOUND(40000,"未找到资源"),
     FAIL(50000,"失败");
 
     public final int status;

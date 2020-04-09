@@ -23,14 +23,13 @@ import java.util.List;
 @Component
 @ConfigurationProperties(prefix = "blue.auth")
 public class AuthenticationProperties {
-
     private Long expireTime;
 
-    private String headerName="Authentication";
+    private String headerName = "Authentication";
     /**
      * redis获取当前用户 key
      */
-    private String loginUserKey="LOGIN:USERS:";
+    private String loginUserKey = "LOGIN:USERS:";
 
     private String tokenKey;
 

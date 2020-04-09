@@ -1,6 +1,5 @@
 server:
   port: 30000
-
 spring:
   # 禁用spring mvc freemarker扫描
   freemarker:

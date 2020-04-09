@@ -33,6 +33,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private AuthenticationProperties authenticationProperties;
     @Resource
     private UserRepository userRepository;
+    
     @Autowired
     private StringRedisTemplate redisTemplate;
 
@@ -52,9 +53,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
         //认证token是否合法
         Integer userId = JWTUtil.getUserId(token);
-        if (userId == null) {
-            throw new AuthenticationException("用户不存在");
-        }
         Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()) {
             throw new AuthenticationException("用户不存在");

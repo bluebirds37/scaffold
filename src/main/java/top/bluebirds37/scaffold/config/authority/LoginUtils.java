@@ -12,7 +12,6 @@ public class LoginUtils {
 
 
     public static Integer getLoginUserId() {
-
         ServletRequestAttributes requestAttributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (requestAttributes == null) {
@@ -20,23 +19,15 @@ public class LoginUtils {
         }
         HttpServletRequest request =
                 requestAttributes.getRequest();
-        if (request == null) {
-            throw new AuthenticationException("请登录");
-        }
         String authentication = request.getHeader("Authorization") == null ? (String) request.getServletContext().getAttribute("Authorization") : request.getHeader("Authorization");
         if (StringUtils.isBlank(authentication)) {
             throw new AuthenticationException("请登录");
         }
-        Integer userId = JWTUtil.getUserId(authentication);
-        if (userId == null) {
-            throw new AuthenticationException("请登录");
-        }
-        return userId;
+        return JWTUtil.getUserId(authentication);
 
     }
 
     public static String getToken() {
-
         ServletRequestAttributes requestAttributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (requestAttributes == null) {
@@ -44,17 +35,11 @@ public class LoginUtils {
         }
         HttpServletRequest request =
                 requestAttributes.getRequest();
-        if (request == null) {
-            throw new AuthenticationException("请登录");
-        }
         String authentication = request.getHeader("Authorization") == null ? (String) request.getServletContext().getAttribute("Authorization") : request.getHeader("Authorization");
         if (StringUtils.isBlank(authentication)) {
             throw new AuthenticationException("请登录");
         }
-        Integer userId = JWTUtil.getUserId(authentication);
-        if (userId == null) {
-            throw new AuthenticationException("请登录");
-        }
+        JWTUtil.getUserId(authentication);
         return authentication;
 
     }

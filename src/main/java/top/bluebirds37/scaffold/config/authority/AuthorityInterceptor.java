@@ -44,10 +44,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         }
         // 当前用户
         Integer loginUserId = LoginUtils.getLoginUserId();
-        if (loginUserId == null) {
-            throw new AuthenticationException("请登录");
-        }
-        String loginUserString = redisTemplate.opsForValue().get(StringUtils.join(authenticationProperties.getLoginUserKey() , loginUserId));
+        String loginUserString = redisTemplate.opsForValue().get(StringUtils.join(authenticationProperties.getLoginUserKey(), loginUserId));
         if (StringUtils.isBlank(loginUserString)) {
             throw new AuthenticationException("请登录");
         }

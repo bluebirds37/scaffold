@@ -14,7 +14,6 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class CrossOriginConfig {
 
-    //CorsFilter 与 security 不兼容
 
     @Bean
     public CorsFilter corsFilter() {

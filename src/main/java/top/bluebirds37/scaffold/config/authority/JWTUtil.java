@@ -6,12 +6,11 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
+
 import java.security.Key;
 
 public class JWTUtil {
-
     private static Key key = MacProvider.generateKey();
-
     /**
      * 校验token是否正确
      *
