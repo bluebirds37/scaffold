@@ -5,9 +5,9 @@ import top.bluebirds37.scaffold.config.authority.AuthenticationProperties;
 import top.bluebirds37.scaffold.config.authority.JWTUtil;
 import top.bluebirds37.scaffold.config.response.ResponseBean;
 import top.bluebirds37.scaffold.config.response.ResponseBuilder;
-import top.bluebirds37.scaffold.pojo.dto.system.UserDto;
+import top.bluebirds37.scaffold.pojo.vo.res.system.UserRes;
 import top.bluebirds37.scaffold.pojo.po.system.User;
-import top.bluebirds37.scaffold.pojo.vo.system.UserRegisterVo;
+import top.bluebirds37.scaffold.pojo.vo.req.system.UserRegisterReq;
 import top.bluebirds37.scaffold.repository.UserRepository;
 import top.bluebirds37.scaffold.service.UserService;
 import top.bluebirds37.scaffold.util.EntityUtils;
@@ -28,18 +28,18 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public ResponseEntity register(UserRegisterVo userRegisterVo) {
-        User user = EntityUtils.copyProperties(userRegisterVo, User.class);
+    public ResponseEntity register(UserRegisterReq userRegisterReq) {
+        User user = EntityUtils.copyProperties(userRegisterReq, User.class);
         userRepository.save(user);
         String sign = JWTUtil.sign(user.getId());
         return ResponseEntity.ok().header(authenticationProperties.getHeaderName(), sign).build();
     }
 
     @Override
-    public ResponseBean<UserDto> findByUsername(String username) {
+    public ResponseBean<UserRes> findByUsername(String username) {
         User user = userRepository.findByUsername(username);
-        UserDto userDto = EntityUtils.copyProperties(user, UserDto.class);
-        return ResponseBuilder.ok(userDto);
+        UserRes userRes = EntityUtils.copyProperties(user, UserRes.class);
+        return ResponseBuilder.ok(userRes);
     }
 
 }

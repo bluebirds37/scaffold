@@ -1,4 +1,4 @@
-package top.bluebirds37.scaffold.pojo.vo.system;
+package top.bluebirds37.scaffold.pojo.vo.req.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import javax.persistence.Column;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserRegisterVo {
+public class UserRegisterReq {
 
     @Column(name = "username", columnDefinition = "varchar(255) comment '用户'")
     private String username;

@@ -4,7 +4,7 @@ package top.bluebirds37.scaffold.config.authority;
 import com.alibaba.fastjson.JSONObject;
 import top.bluebirds37.scaffold.config.exception.AuthenticationException;
 import top.bluebirds37.scaffold.config.exception.AuthorityException;
-import top.bluebirds37.scaffold.pojo.dto.system.UserDto;
+import top.bluebirds37.scaffold.pojo.vo.res.system.UserRes;
 import top.bluebirds37.scaffold.pojo.po.system.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -49,8 +49,8 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             throw new AuthenticationException("请登录");
         }
         JSONObject jsonObject = JSONObject.parseObject(loginUserString);
-        UserDto loginUserDto = JSONObject.toJavaObject(jsonObject, UserDto.class);
-        Set<Role> roles = loginUserDto.getRoles();
+        UserRes loginUserRes = JSONObject.toJavaObject(jsonObject, UserRes.class);
+        Set<Role> roles = loginUserRes.getRoles();
         String requestUri = request.getRequestURI();
         boolean hasPermission = roles.stream().anyMatch(role -> role.getPermissions().stream().anyMatch(permission -> permission.getUrl().equals(requestUri)));
         // 权限列表

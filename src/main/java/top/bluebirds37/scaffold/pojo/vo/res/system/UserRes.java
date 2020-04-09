@@ -1,4 +1,4 @@
-package top.bluebirds37.scaffold.pojo.dto.system;
+package top.bluebirds37.scaffold.pojo.vo.res.system;
 
 import top.bluebirds37.scaffold.pojo.po.system.Role;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDto implements Serializable {
+public class UserRes implements Serializable {
 
     private Long id;
 
