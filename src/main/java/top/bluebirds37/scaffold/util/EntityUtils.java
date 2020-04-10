@@ -8,15 +8,11 @@ public class EntityUtils {
         E targetEntity = null;
         try {
             targetEntity = targetClass.newInstance();
-            executeCopyProperties(source, targetEntity);
+            BeanUtils.copyProperties(source, targetEntity);
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return targetEntity;
-    }
-
-    private static <T, E> void executeCopyProperties(T source, E target) {
-        BeanUtils.copyProperties(source, target);
     }
 
 }
