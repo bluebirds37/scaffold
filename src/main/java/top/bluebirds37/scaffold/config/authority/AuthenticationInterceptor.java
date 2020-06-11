@@ -33,7 +33,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private AuthenticationProperties authenticationProperties;
     @Resource
     private UserRepository userRepository;
-    
+
     @Autowired
     private StringRedisTemplate redisTemplate;
 
